@@ -1,0 +1,57 @@
+@(loginForm: Form[Authenticate.Login])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+
+@indextemplate(title ="Login",null) {    
+    @form(action = routes.Authenticate.login2,  'id -> "loginform", 'class -> "form-horizontal well container span7") {
+		<fieldset class='fieldset1'>
+            <legend>用户登录</legend>
+            		    
+		   @if(loginForm.hasGlobalErrors) { 
+		   		<h1>
+                <p class="error">
+                    @loginForm.globalError.message
+                </p>
+                </h1>
+            }
+            
+            @if(flash.contains("success")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("success")
+                </p></font>
+                </h1>
+            }
+            @if(flash.contains("deny")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("deny")
+                </p></font>
+                </h1>
+            }
+            @if(flash.contains("logout")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("logout")
+                </p></font>
+                </h1>
+            }
+		    @inputText(
+				field = loginForm("email"),
+				args = 'label -> "email", 'placeholder -> "name@comp.com",'_showConstraints -> false,'_error -> loginForm.error("email"),'class ->"span5"
+			)
+		   @inputPassword(
+				field = loginForm("userpass"),
+				args = 'label -> "password", 'placeholder -> "******",'_showConstraints -> false,'_error -> loginForm.error("userpass"),'class ->"span5"
+			)
+			<!-- input type="file" name="picture"-->
+			
+			<p>
+				<input type="submit">
+			</p>
+		</fieldset>
+	} 	
+
+}

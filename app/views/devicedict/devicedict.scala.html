@@ -1,0 +1,106 @@
+@(uploadForm: Form[DeviceDict])(logfilecontent: String)(dictsimilarity: List[DeviceDict])(user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+
+
+
+@indextemplate(title = logfilecontent,user) {
+    
+    
+    
+    @form(action = routes.DeviceDictParser.upload, 'id -> "uploadForm", 'class ->"form-horizontal well well-large well-transparent lead") {
+    		@if(uploadForm.hasGlobalErrors) { 
+    			
+                <p>
+                   <h1 class="alert-message warning"> @uploadForm.globalError.message</h1>
+                </p>
+                
+            }
+            @if(flash.contains("success")) {
+            	
+                <p class="success">
+                <h1 class="alert-message warning"><font color=red>
+                    @flash.get("success")
+                    </font></h1>
+                </p>
+                
+            }
+		<fieldset class='fieldset1'>
+            <legend>中英文对照</legend>
+            <br/>
+            <!-- input type = "hidden" name ="id" id="id" value=""></input-->
+           
+            
+            @inputText(
+            field = uploadForm("wordch"),
+            	args = 
+            	'_label -> "中文", 
+            	'_showConstraints -> false,
+            	'placeholder -> "词典",'class ->"span5"
+        	)
+        	
+            
+            @inputText(
+            field = uploadForm("worden"),
+            	args = 
+            	'_label -> "对应英文", 
+            	'_showConstraints -> false,
+            	'placeholder -> "dict",'class ->"span5"
+        	)
+                        
+		    @textarea(
+	            field = uploadForm("comment"),
+	            args = 
+	            '_label -> "备注",
+	            'rows -> "5",'cols -> "180",
+	            '_help -> "Please describe the using place.",
+	            '_showConstraints -> false,
+	            '_error -> uploadForm.error("comment"),'class ->"span5"
+	        )
+                    	
+            @select(
+            field = uploadForm("checked"), 
+	            options = options(
+	                "否" -> "否","是" -> "是"
+	            ),
+	            args = '_label -> "是否已审校",'class ->"span5"
+	        )
+	        <div style="visibility:hidden">
+	        @inputText(
+            field = uploadForm("dictid"),
+            	args = 
+            	'_label -> "当前id号", 
+            	'_showConstraints -> false,
+            	'placeholder -> ""
+        	)
+	        </div>
+	        
+	        <!-- input type="hidden" id="id"  name="id"  value ="00" -->
+			<p>
+				<button type="submit" class="btn btn-primary"> 提交 </button>
+			</p>
+			<p>
+				@if(dictsimilarity != null) {
+				<ul>
+					@for(p <- dictsimilarity) {  
+						<li><a href="@routes.DeviceDictParser.edit(p.dictid)">
+						@p.dictid &nbsp;&nbsp;&nbsp;&nbsp;@p.wordch &nbsp;&nbsp;&nbsp;&nbsp; @p.worden
+						</a></li>
+					  
+					} 
+			    </ul>	
+				}
+			</p>
+			<p>
+				<a class="btn success" href="@routes.DeviceDictParser.list()">打开已提交词语列表</a>
+			</p>
+		</fieldset>
+		<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+		</script>
+		
+		
+	} 	
+    
+}

@@ -1,0 +1,16 @@
+@(message: String,user: User)
+@import helper._
+
+@indextemplate(title ="SnCalculator",user) {    
+    @form(action = routes.SnCalculator.calc(""),  'id -> "calcsnform") {
+		<fieldset class='fieldset1'>
+            <legend>待算Code</legend>
+            <input type="search" id="searchbox" name="f" value="" placeholder="Calculate sn...">
+			
+			<p>
+				<input type="submit">
+			</p>
+		</fieldset>
+	} 	
+
+}

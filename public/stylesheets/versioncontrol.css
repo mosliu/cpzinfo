@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+.redfont {
+	color:red;
+}
+.greenfont {
+	color:green;
+}
+.bluefont {
+	color:blue;
+}
+.aquafont {
+	color:aqua;
+}
+.fuchsiafont {
+	color:fuchsia;
+}
+.limefont {
+	color:lime;
+}
+.grayfont {
+	color:gray;
+}
+.maroonfont {
+	color:maroon;
+}
+.blackfont {
+	color:black;
+}
+.navyfont {
+	color:navy;
+}
+.olivefont {
+	color:olive;
+}
+.tealfont {
+	color:teal;
+}
+.silverfont {
+	color:silver;
+}
+.purplefont {
+	color:purple;
+}
+.yellowfont {
+	color:yellow;
+}
+
+.fieldset1{
+	border:2px solid #cc;padding:0 20px;background:#eee
+}
+#pagination {
+    position: relative;
+}
+
+#pagination ul {
+    position: absolute;
+    right: 0;
+    padding-left: 0px;
+    
+}
+
+#pagination ul .current a {
+    color: #666;
+}
+
+table.zfs {
+    width:100%;
+}
+
+
+table.zfs em {
+    color: #aaa;
+}
+
+table.zfs .introduced, table.zfs .discontinued {
+    width: 10%;
+    min-width: 100px;
+}
+
+table.zfs .company_name {
+    width: 30%;
+    min-width: 300px;
+}
+
+table.zfs .header a {
+}

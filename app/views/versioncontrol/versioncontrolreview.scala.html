@@ -1,0 +1,136 @@
+@(vc: VersionControl)(logfilecontent: String)(user:User) 
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "版本管理",user) {
+
+<fieldset class='fieldset1'>
+	<legend>版本信息</legend>
+	<br/>
+	<form class="form-horizontal">
+	<table class="table">
+	<tr class="span9">
+		<td class="span3">
+			<div class="clearfix"><br/>
+				<label for="device">设备名称</label>
+				<label>@vc.device</label>
+			</div>
+		</td>
+		<td  class="span3">
+			@if(vc.language != null) {
+			<div class="clearfix"><br/>
+				<label for="language">语言类型</label>
+				<label class="">@vc.language</label>
+			</div>
+			}
+		</td>
+		<td class="span3">
+		@if(vc.versionkind != null) {
+		<div class="clearfix"><br/>
+			<label for="versionkind">特定版本</label>
+			<label class="">@vc.versionkind</label>
+		</div>
+		}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			@if(vc.versionno != null) {
+			<div class="clearfix"><br/>
+				<label for="versionno">当前版本号</label>
+				<label class="">@vc.versionno</label>
+			</div>
+			}
+		</td>
+		<td>
+			@if(vc.fatherversionno  != null) {
+			<div class="clearfix"><br/>
+				<label for="fatherversionno">上一版本号</label>
+			      <label class="">@vc.fatherversionno</label>
+			</div>
+			}
+		</td>
+		<td>
+			@if(vc.modifier  != null) {
+			<div class="clearfix"><br/>
+				<label for="modifier">修改人</label>
+			      <label class="">@vc.modifier</label>
+			</div>
+			}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			@if(vc.modifydate  != null) {
+			<div class="clearfix"><br/>
+				<label for="modifydate">修改时间</label>
+			      <label class="">@vc.modifydate</label>
+			</div>
+			}
+		</td>
+		<td>
+			@if(vc.modifyreason  != null) {
+			<div class="clearfix"><br/>
+				<label for="modifyreason">修改原因</label>
+				<div class="input" ><textarea id="modifyreason" name="modifyreason" rows="10" cols="230" style="margin-left:30px">@vc.modifyreason</textarea></div>
+			</div>
+			}
+		</td>
+		<td>
+			@if(vc.modifycontent  != null) {
+			<div class="clearfix"><br/>
+				<label for="modifycontent">修改内容</label>
+				<div class="input" ><textarea id="modifycontent" name="modifycontent" rows="10" cols="230" style="margin-left:30px">@vc.modifycontent</textarea></div>
+			</div>
+			}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			@if(vc.packagecontent  != null) {			
+			<div class="clearfix"><br/>
+				<label for="packagecontent">打包内容</label>
+				<div class="input" ><textarea id="packagecontent" name="packagecontent" rows="10" cols="230" style="margin-left:30px">@vc.packagecontent</textarea></div>
+			</div>
+			}
+		</td>
+		<td>
+			@if(vc.SCMinfo  != null) {
+			<div class="clearfix"><br/>
+				<label for="SCMinfo">对应单片机信息</label>
+			      <label class="">@vc.SCMinfo</label>
+			</div>
+			}
+		</td>
+		<td>
+			@if(vc.shippingversion  != null) {
+			<div class="clearfix"><br/>
+				<label for="shippingversion">是否在用的版本</label>
+			      <label class="">@vc.shippingversion</label>
+			</div>
+			}
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	</table>
+
+
+	
+	
+	
+	<p>
+		<a class="btn success" href="@routes.VersionControlParser.list()">返回定制列表</a>
+	</p>
+	</form>
+</fieldset>
+<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+</script>
+
+}

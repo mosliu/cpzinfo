@@ -1,0 +1,129 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the computer list
+GET     /                           controllers.Application.index()
+GET     /versions					controllers.Application.upgradelog()
+GET     /testemail                  controllers.Application.testemail()
+GET     /test		                controllers.Application.test()
+
+# SnCalculator
+GET     /sncalcindex				controllers.SnCalculator.index()
+GET     /sncalc						controllers.SnCalculator.calc(f?="")
+# Authentication
+GET     /login						controllers.Authenticate.login()
+POST    /login						controllers.Authenticate.login2()
+GET     /logout						controllers.Authenticate.logout()
+
+#admin
+GET     /Admin/user					controllers.Admin.user()
+POST	/Admin/user					controllers.Admin.usercontrol()
+POST    /Admin/userrole				controllers.Admin.userroles()
+
+# Profile
+GET     /Profile/changepass			controllers.Profile.index()
+POST	/Profile/changepass			controllers.Profile.changePassword()
+
+
+#Electric FAQ parser
+
+GET  	/ElectricFAQ/             	controllers.ElectricFaqParser.index()
+POST    /ElectricFAQ/				controllers.ElectricFaqParser.upload()
+GET     /ElectricFAQ/Show         	controllers.ElectricFaqParser.review(id:Long)
+GET     /ElectricFAQ/List         	controllers.ElectricFaqParser.list(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "")
+
+#DeviceDict parser
+
+GET     /Devicedict/ 	        	controllers.DeviceDictParser.index()
+POST    /Devicedict/				controllers.DeviceDictParser.upload()
+GET 	/Devicedict/Show        	controllers.DeviceDictParser.edit(id:Long)
+GET     /Devicedict/List 	        controllers.DeviceDictParser.list(p:Int ?= 0, s ?= "dictid", o ?= "desc", f ?= "", w?="")
+#GET     /Devicedict/ListNoTrans	    controllers.DeviceDictParser.listnotrans(p:Int ?= 0, s ?= "dictid", o ?= "desc", f ?= "", w?="")
+
+#/VersionControl parser
+GET  	/VersionControl/           	controllers.VersionControlParser.index()
+POST    /VersionControl/			controllers.VersionControlParser.upload()
+GET     /VersionControl/Down		controllers.VersionControlParser.downloadFile(id:Long)
+POST    /VersionControl/QueryVer	controllers.VersionControlParser.queryVersion()
+GET     /VersionControl/QueryVerJ   controllers.VersionControlParser.queryVersionJson()
+GET     /VersionControl/Edit        controllers.VersionControlParser.edit(id:Long)
+GET     /VersionControl/Show        controllers.VersionControlParser.review(id:Long)
+GET     /VersionControl/List        controllers.VersionControlParser.list(p:Int ?= 0, s ?= "versionid", o ?= "desc", f ?= "")
+
+#Order List parser
+
+GET     /OrderList/Show         	controllers.OrderListParser.review(id:Long)
+GET     /OrderList/List         	controllers.OrderListParser.list(p:Int ?= 0, s ?= "orderid", o ?= "asc", f ?= "0")
+
+#Zigbee File parser
+POST    /ZigBee/LogFileupload       controllers.ZigbeeLogFileParser.upload()
+GET     /ZigBee/LogFile             controllers.ZigbeeLogFileParser.index()
+GET     /ZigBee/LogFileShow         controllers.ZigbeeLogFileParser.review(id:Long)
+GET     /ZigBee/LogFileShow2        controllers.ZigbeeLogFileParser.searchreview(id:Long ?=0, f ?= "nil")
+GET     /ZigBee/LogFileList         controllers.ZigbeeLogFileParser.list(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "")
+
+#ProductGroupInfo
+GET     /ProductGroup/index         controllers.ProductGroup.index()
+
+#faulttreatment
+
+#Get		/FaultTreatment				controllers.FaultTreatmentParser.index()
+GET 	/FaultTreatment/List 		controllers.FaultTreatmentParser.list(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "")
+GET     /FaultTreatment/:id			controllers.FaultTreatmentParser.edit(id:Long)
+POST    /FaultTreatment/			controllers.FaultTreatmentParser.upload()
+GET     /FaultTreatment/			controllers.FaultTreatmentParser.index()
+
+
+#TaskInfo 20140116
+GET     /TaskInfo					controllers.TaskInfoParser.index()
+POST    /TaskInfo					controllers.TaskInfoParser.upload()
+GET 	/TaskInfo/List 				controllers.TaskInfoParser.list(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "")
+GET 	/TaskInfo/List2				controllers.TaskInfoParser.listbyuser(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "" , uid:Int ?= -1)
+GET     /TaskInfo/:id				controllers.TaskInfoParser.edit(id:Long)
+
+#BarCode 20130411
+GET		/BarCode					controllers.BarCode.index()
+POST	/BarCodeQuery				controllers.BarCode.query(f ?= "no input")
+GET		/BarCode/:str.png				controllers.BarCode.pic(str:String)
+GET		/BarCode2/:str.png				controllers.BarCode.pic2(str:String)
+
+
+#FORMULAS
+GET		/FormulaCompute				controllers.FormulaCompute.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+
+#**************************GARBAGE*******************************************
+
+
+#GET     /index2                     controllers.Application2.index()
+
+# Computers list (look at the default values for pagination parameters)
+#GET     /computers                  controllers.Application2.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add computer
+#GET     /computers/new              controllers.Application2.create()
+#POST    /computers                  controllers.Application2.save()
+
+# Edit existing computer
+#GET     /computers/:id              controllers.Application2.edit(id:Long)
+#POST    /computers/:id              controllers.Application2.update(id:Long)
+
+
+
+
+# Delete a computer
+#POST    /computers/:id/delete       controllers.Application2.delete(id:Long)
+
+
+
+# Home page
+#GET     /index1                     controllers.Application1.index()
+
+# Hello action
+#GET     /hello1                     controllers.Application1.sayHello()
+#**************************GARBAGE*******************************************

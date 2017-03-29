@@ -1,0 +1,142 @@
+@(currentPage: TaskInfo.Page, currentSortBy: String, currentOrder: String, currentFilter: String, user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.TaskInfoParser.list(newPage, sortBy, order, currentFilter)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@indextemplate(title = "任务分配情况",user) {
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/docs.css")'>
+    <div class="span2 bs-docs-sidebar">
+  		<ul class="nav nav-list bs-docs-sidenav">
+          <li class=""><a href="@routes.TaskInfoParser.list()"><i class="fa fa-chevron-right"></i> 所有任务</a></li>
+          <li class=""><a href="@routes.TaskInfoParser.listbyuser()"><i class="fa fa-chevron-right"></i> 栅格系统</a></li>
+          <li class=""><a href="#fluidGridSystem"><i class="fa fa-chevron-right"></i> 流式栅格系统</a></li>
+          <li class=""><a href="#layouts"><i class="fa fa-chevron-right"></i> 布局</a></li>
+          <li class=""><a href="#responsive"><i class="fa fa-chevron-right"></i> 响应式设计</a></li>
+        </ul>
+    </div>
+    <div class="span8">
+    <h1 id="homeTitle">@Messages("", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+        
+    } 
+
+    <div id="actions">
+        
+        <form action="@link(0, "filedescribe")" method="GET" name="searchform">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="dict">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        	<a class="btn btn-success" id="add" href="@routes.TaskInfoParser.index()">上传一个新任务</a>
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+        <br/>
+            <h1><em>Nothing to display</em></h1>
+        <br/>
+        </div>
+        
+    } else {
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    @header("taskInfoId", "序号")
+                    @header("taskName", "任务名")
+                    @header("assignee", "执行人")
+                    @header("creater", "创建人")
+                    @header("progress", "进度")
+                    @header("createTime", "创建时间")
+                    @header("endTime", "截止时间")
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(zf <- currentPage.getList) {
+                
+               <tr>
+                        <td nowrap><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@zf.taskInfoId</a></td>
+                        <td ><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@if(zf.taskName.length>20){@zf.taskName.substring(0,20) ...}else{@zf.taskName}</a></td>
+                        <td nowrap><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@zf.assignee</a></td>
+                        <td nowrap><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@zf.creater</a></td>
+                        <td nowrap><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@zf.progress</a></td>
+                        <td nowrap><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@zf.createTime</a></td>
+                        <td nowrap><a href="@routes.TaskInfoParser.edit(zf.taskInfoId)">@zf.endTime</a></td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            <tr><td colspan="7">
+            <div id="pagination" class="pagination">
+                <a href="@link(1, null)">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasPrev) {
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasNext) {
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                <a href="@link(currentPage.getPageLast, null)">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        	</div>
+        	</td></tr>
+            </tfoot>
+        </table>
+
+        </div>
+        
+    }
+    <script type="text/javascript">
+	    
+	</script>
+        
+}
+
+            

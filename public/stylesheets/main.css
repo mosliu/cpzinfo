@@ -1,0 +1,38 @@
+
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    font-family: Verdana,"Helvetica Neue", Helvetica, Arial, sans-serif  !important ;
+}
+
+hr{
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #dddddd;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+h3.subsection {
+    padding-left: 7px;
+    margin-top: 7px;
+    background-color: #8fd2ff;
+}
+
+iframe {
+    height: 50px;
+    width: 150px;
+}
+
+div.columnHeader {
+	font-weight: bold;
+}
+
+.fixnavtop {
+  padding-top: 30px;
+}
+/* 定义textare的宽度 */
+
+

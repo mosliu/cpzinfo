@@ -1,0 +1,62 @@
+@(message: String,user: User,applist:List[Appinfo])
+@import helper._ 
+@import helper.twitterBootstrap._
+@indextemplate(title ="Moses'applications",user) {
+
+
+<table class="table table-bordered table-striped" summary="Applications" align= "center" height= "100%" width= "70%">
+	<caption><strong>产品组 实用工具</strong></caption>
+	<thead>
+		<tr>
+			<th scope="col">序号</th>
+			<th scope="col">应用名称</th>
+			<th scope="col">说明</th>
+			<th scope="col">次数</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th scope="row">Last Update</th>
+			<th colspan="2">2013.03.20</th>
+			<th ></th>
+		</tr>
+	</tfoot>
+	<tbody>
+		@for(app <- applist) {
+			@if(app.id%2==0){
+			<tr>
+			}else{
+			<tr>
+			}
+			<th scope="row">@app.id</th>
+			<td><a href="@app.appaddress">@app.appname</td>
+			<td>@app.appinfo</td>			
+			<td>@app.appcount</td>
+		</tr>
+		}
+		
+			<tr >
+			<th scope="row">@(applist.length+1)</th>
+			<td><a href="@routes.Admin.user()">用户管理</a></td>
+			<td>管理用户，在Role表中</td>			
+			<td></td>
+			</tr>
+			
+		
+			<!-- tr>
+			<th scope="row"></th>
+			<td><a href="@routes.Application.testemail">test email</a></td>
+			<td></td>			
+			<td>次数待统计</td>
+			</tr>
+			<tr class="odd">
+			<th scope="row"></th>
+			<td><a href="@routes.Application.test">test</a></td>
+			<td></td>			
+			<td>次数待统计</td>
+			</tr -->
+	</tbody>
+</table>
+
+<div>@message</div>
+}

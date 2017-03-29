@@ -1,0 +1,166 @@
+2014-01-10 13:05:37,582 WARN play-akka.actor.default-dispatcher-3 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-10 13:29:09,653 WARN play-akka.actor.default-dispatcher-7 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-10 13:41:22,830 WARN play-akka.actor.default-dispatcher-4 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-11 13:13:45,943 WARN play-akka.actor.default-dispatcher-2 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-13 09:28:10,909 WARN play-akka.actor.default-dispatcher-5 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-13 09:28:10,910 WARN play-akka.actor.default-dispatcher-8 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:18:08,004 WARN play-akka.actor.default-dispatcher-9 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:19:47,416 WARN play-akka.actor.default-dispatcher-15 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 75.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:19:47,427 WARN play-akka.actor.default-dispatcher-15 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 59.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:36:57,611 WARN play-akka.actor.default-dispatcher-24 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:54:18,876 WARN play-akka.actor.default-dispatcher-65 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:54:49,124 WARN play-akka.actor.default-dispatcher-65 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:55:24,740 WARN play-akka.actor.default-dispatcher-71 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:55:40,144 WARN play-akka.actor.default-dispatcher-76 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:55:57,307 WARN play-akka.actor.default-dispatcher-71 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-14 16:56:35,826 WARN play-akka.actor.default-dispatcher-80 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-15 15:55:33,069 WARN play-akka.actor.default-dispatcher-97 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-15 16:34:24,553 ERROR play-internal-execution-context-1 org.hibernate.tool.hbm2ddl.SchemaUpdate - HHH000388: Unsuccessful: alter table taskcomments add index FK78D6BE79E2060305 (TASKINFOID), add constraint FK78D6BE79E2060305 foreign key (TASKINFOID) references taskinfo (TASKINFOID)
+2014-01-15 16:34:24,557 ERROR play-internal-execution-context-1 org.hibernate.tool.hbm2ddl.SchemaUpdate - Can't create table 'play.#sql-608_377f' (errno: 150)
+2014-01-15 16:34:30,966 WARN play-akka.actor.default-dispatcher-3 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-15 16:37:30,284 ERROR play-internal-execution-context-1 org.hibernate.tool.hbm2ddl.SchemaUpdate - HHH000388: Unsuccessful: alter table taskcomments add index FK78D6BE79E2060305 (TASKINFOID), add constraint FK78D6BE79E2060305 foreign key (TASKINFOID) references taskinfo (TASKINFOID)
+2014-01-15 16:37:30,324 ERROR play-internal-execution-context-1 org.hibernate.tool.hbm2ddl.SchemaUpdate - Can't create table 'play.#sql-608_378f' (errno: 150)
+2014-01-15 16:37:32,763 WARN play-akka.actor.default-dispatcher-6 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-15 16:43:36,275 WARN play-akka.actor.default-dispatcher-8 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 09:14:44,676 WARN play-akka.actor.default-dispatcher-8 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 09:45:58,599 WARN play-akka.actor.default-dispatcher-57 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 13:40:55,445 WARN play-akka.actor.default-dispatcher-3 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 14:21:13,767 WARN play-akka.actor.default-dispatcher-14 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 14:22:20,050 WARN play-akka.actor.default-dispatcher-21 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 72.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 14:22:20,052 WARN play-akka.actor.default-dispatcher-21 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 98.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 14:22:20,082 WARN play-akka.actor.default-dispatcher-21 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 56.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 14:22:20,085 WARN play-akka.actor.default-dispatcher-21 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 83.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 15:03:43,868 WARN play-akka.actor.default-dispatcher-45 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 15:17:51,964 WARN play-akka.actor.default-dispatcher-66 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 15:21:41,694 WARN play-akka.actor.default-dispatcher-70 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 15:27:06,184 WARN play-akka.actor.default-dispatcher-87 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-16 15:35:27,254 WARN play-akka.actor.default-dispatcher-98 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-17 10:54:28,581 WARN play-akka.actor.default-dispatcher-103 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-17 10:54:34,857 WARN play-akka.actor.default-dispatcher-103 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-17 10:54:35,528 WARN play-akka.actor.default-dispatcher-106 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 15:52:42,789 WARN play-akka.actor.default-dispatcher-11 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 15:56:55,614 WARN play-akka.actor.default-dispatcher-13 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 16:59:41,746 WARN play-akka.actor.default-dispatcher-29 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 17:01:32,734 WARN play-akka.actor.default-dispatcher-33 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 17:03:38,075 WARN play-akka.actor.default-dispatcher-4 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 17:04:12,579 WARN play-akka.actor.default-dispatcher-7 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-22 17:05:39,708 WARN play-akka.actor.default-dispatcher-18 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-23 07:56:59,986 WARN play-akka.actor.default-dispatcher-8 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-23 08:02:23,790 WARN play-akka.actor.default-dispatcher-16 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:26:11,834 WARN play-akka.actor.default-dispatcher-28 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:27:27,121 WARN play-akka.actor.default-dispatcher-33 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:30:44,054 WARN play-akka.actor.default-dispatcher-30 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:31:49,856 WARN play-akka.actor.default-dispatcher-49 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:54:42,168 WARN play-akka.actor.default-dispatcher-56 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:57:02,520 WARN play-akka.actor.default-dispatcher-58 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 11:58:08,913 WARN play-akka.actor.default-dispatcher-63 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 13:12:10,369 WARN play-akka.actor.default-dispatcher-76 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 13:13:02,525 WARN play-akka.actor.default-dispatcher-77 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 13:18:29,027 WARN play-akka.actor.default-dispatcher-87 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 13:31:25,243 WARN play-akka.actor.default-dispatcher-120 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:32:23,750 WARN play-akka.actor.default-dispatcher-121 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:38:05,299 WARN play-akka.actor.default-dispatcher-137 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:38:05,348 ERROR play-akka.actor.default-dispatcher-137 org.hibernate.hql.internal.ast.ErrorCounter - line 1:41: unexpected token: And
+2014-01-26 15:38:05,394 ERROR play-akka.actor.default-dispatcher-137 org.hibernate.hql.internal.ast.ErrorCounter - line 1:41: unexpected token: And
+line 1:41: unexpected token: And
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.fromClassOrOuterQueryPath(HqlBaseParser.java:1866)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.fromRange(HqlBaseParser.java:1492)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.fromClause(HqlBaseParser.java:1336)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectFrom(HqlBaseParser.java:1054)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.queryRule(HqlBaseParser.java:700)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectStatement(HqlBaseParser.java:294)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.statement(HqlBaseParser.java:157)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.parse(QueryTranslatorImpl.java:266)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:180)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:136)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:106)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:81)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:167)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:217)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:195)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1649)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:286)
+	at models.TaskInfo.page(TaskInfo.java:201)
+	at controllers.TaskInfoParser.listbyuser(TaskInfoParser.java:53)
+	at controllers.TaskInfoParser.list(TaskInfoParser.java:37)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$45$$anonfun$apply$45.apply(routes_routing.scala:605)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$45$$anonfun$apply$45.apply(routes_routing.scala:605)
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183)
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56)
+	at play.GlobalSettings$1.call(GlobalSettings.java:64)
+	at play.mvc.Security$AuthenticatedAction.call(Security.java:45)
+	at play.db.jpa.TransactionalAction$1.apply(TransactionalAction.java:20)
+	at play.db.jpa.TransactionalAction$1.apply(TransactionalAction.java:18)
+	at play.db.jpa.JPA.withTransactionAsync(JPA.java:177)
+	at play.db.jpa.TransactionalAction.call(TransactionalAction.java:15)
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91)
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90)
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2014-01-26 15:39:24,031 WARN play-akka.actor.default-dispatcher-140 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:39:24,053 ERROR play-akka.actor.default-dispatcher-140 org.hibernate.hql.internal.ast.ErrorCounter - line 1:54: unexpected token: And
+2014-01-26 15:39:24,057 ERROR play-akka.actor.default-dispatcher-140 org.hibernate.hql.internal.ast.ErrorCounter - line 1:54: unexpected token: And
+line 1:54: unexpected token: And
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.negatedExpression(HqlBaseParser.java:2355)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.logicalAndExpression(HqlBaseParser.java:2269)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.logicalOrExpression(HqlBaseParser.java:2224)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.expression(HqlBaseParser.java:2010)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.logicalExpression(HqlBaseParser.java:1786)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.whereClause(HqlBaseParser.java:452)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.queryRule(HqlBaseParser.java:706)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectStatement(HqlBaseParser.java:294)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.statement(HqlBaseParser.java:157)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.parse(QueryTranslatorImpl.java:266)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:180)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:136)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:106)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:81)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:167)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:217)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:195)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1649)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:286)
+	at models.TaskInfo.page(TaskInfo.java:201)
+	at controllers.TaskInfoParser.listbyuser(TaskInfoParser.java:53)
+	at controllers.TaskInfoParser.list(TaskInfoParser.java:37)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$45$$anonfun$apply$45.apply(routes_routing.scala:605)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$45$$anonfun$apply$45.apply(routes_routing.scala:605)
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183)
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56)
+	at play.GlobalSettings$1.call(GlobalSettings.java:64)
+	at play.mvc.Security$AuthenticatedAction.call(Security.java:45)
+	at play.db.jpa.TransactionalAction$1.apply(TransactionalAction.java:20)
+	at play.db.jpa.TransactionalAction$1.apply(TransactionalAction.java:18)
+	at play.db.jpa.JPA.withTransactionAsync(JPA.java:177)
+	at play.db.jpa.TransactionalAction.call(TransactionalAction.java:15)
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91)
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90)
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2014-01-26 15:40:09,569 WARN play-akka.actor.default-dispatcher-141 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:40:12,324 WARN play-akka.actor.default-dispatcher-142 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:40:12,327 WARN play-akka.actor.default-dispatcher-143 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-01-26 15:42:08,194 WARN play-akka.actor.default-dispatcher-154 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2014-03-04 13:52:57,550 WARN play-akka.actor.default-dispatcher-7 org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 31.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.

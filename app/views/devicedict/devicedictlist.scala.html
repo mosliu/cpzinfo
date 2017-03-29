@@ -1,0 +1,168 @@
+@(currentPage: DeviceDict.Page, currentSortBy: String, currentOrder: String, currentFilter: String,currentwhere : String, user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.DeviceDictParser.list(newPage, sortBy, order, currentFilter,currentwhere)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@indextemplate(title = "中英文对照列表",user) {
+    
+    <h1 id="homeTitle">@Messages("", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+        
+    } 
+
+    <div id="actions">
+        
+        <form action="@link(0, "filedescribe")" method="GET" name="searchform">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="dict">
+            <input type="submit" id="searchsubmit" value="搜索所有" class="btn btn-primary" onclick = "submit1()">
+            <input type = "hidden" name ="w" id="w" value="@currentwhere">
+        	<input type="button" class="btn btn-success" onclick ="submitmorewhere()" value="翻译未翻译项">
+        	<a class="btn btn-success" id="add" href="@routes.DeviceDictParser.index()">上传一组新翻译</a>
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+        <br/>
+            <h1><em>Nothing to display</em></h1>
+        <br/>
+        </div>
+        
+    } else {
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    @header("dictid", "序号")
+                    @header("wordch", "中文")
+                    @header("worden", "英文")
+                    @header("username", "提交人")
+                    @header("checked", "是否采纳")
+                    @header("comment", "备注")
+    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(zf <- currentPage.getList) {
+                
+               <tr>
+                        <td nowrap><a href="@routes.DeviceDictParser.edit(zf.dictid)">@zf.dictid</a></td>
+                        <td nowrap><a href="@routes.DeviceDictParser.edit(zf.dictid)">@if(zf.wordch.length>15){@zf.wordch.substring(0,15) ...}else{@zf.wordch}</a></td>
+                        <td nowrap><a href="@routes.DeviceDictParser.edit(zf.dictid)">@if(zf.worden.length>30){@zf.worden.substring(0,30) ...}else{@zf.worden}</a></td>
+                        <td nowrap><a href="@routes.DeviceDictParser.edit(zf.dictid)">@zf.username</a></td>
+                        <td nowrap><a href="@routes.DeviceDictParser.edit(zf.dictid)">@zf.checked</a></td>
+                        <td width="15%"><a href="@routes.DeviceDictParser.edit(zf.dictid)">@if(zf.comment.length>25){@zf.comment.substring(0,25)}else{@zf.comment}</a></td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            <tr><td colspan="7">
+            <div id="pagination" class="pagination">
+                <a href="@link(1, null)">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasPrev) {
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasNext) {
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                <a href="@link(currentPage.getPageLast, null)">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        	</div>
+        	</td></tr>
+            </tfoot>
+        </table>
+
+        
+        
+    }
+    <script type="text/javascript">
+	    /*
+	    function addClass(element, value) {
+		    if(!element.className) {
+		        element.className = value; //如果element本身不存在class,则直接添加class为value的值
+		    } else {
+		        element.className += " "+value; //如果element之前有一个class值，注意中间要多一个空格,然后再加上value的值
+		    }
+		}
+		//隔行换色
+		function stripeTable() {
+		
+		    var tables = document.getElementsByTagName("table"); //遍历文档中的所有table
+		    for(var i=0; i<tables.length; i++) {
+		        var rows = document.getElementsByTagName("tr");
+		        for(var j=0; j<rows.length; j++) {
+		            if(j%2 == 0) {
+		                addClass(rows[j], "odd"); //如是偶数行，则添加class为odd的属性
+		                rows[j].setAttribute("class", "odd");
+		            }
+		        }
+		    }
+		}*/
+		function submitmorewhere(){
+			$("#w").val(" worden = ''");
+			searchform.submit();
+		}
+		function submit1(){
+			$("#w").val("");
+			searchform.submit();
+		}
+		window.onload = function() {
+		    
+		}
+		$(document).ready( function() {
+			stripeTable();
+		});
+		
+	</script>
+        
+}
+
+            

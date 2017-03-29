@@ -1,0 +1,47 @@
+@(message: String,user: User,infolist: List[ProductGroupInfo])
+@import helper._ 
+@import helper.twitterBootstrap._
+
+@indextemplate(title ="Product Group Companion Informations",user) {
+
+<div class="centercontainer">
+<table summary="Applications" align= "center" height= "100%" width="80%"  class="table table-bordered table-hover">
+	<caption><h1>产品组 人员信息</h1></caption>
+	<thead>
+		<tr>
+			<th scope="col">编号</th>
+			<th scope="col">姓名</th>
+			<th scope="col">职务</th>
+			<th scope="col">生日</th>
+			<th scope="col">农历生日</th>
+			<th scope="col">邮箱</th>
+			<th scope="col">移动电话</th>
+			<th scope="col">备注</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th scope="row"></th>
+			<th scope="row">Last Update</th>
+			<th colspan="5">2013.03.25</th>
+			<th ></th>
+		</tr>
+	</tfoot>
+	<tbody>
+		@for((l, index) <- infolist.zipWithIndex){
+		<tr>
+			<th scope="row">@(index+1)</th>
+			<td>@l.name</a></td>
+			<td>@l.position</td>			
+			<td>@l.birthday.format("yyyy-MM-dd")</td>
+			<td>@l.birthday_lunar</td>
+			<td>@l.email</td>
+			<td>@l.cellphone</td>
+			<td>@l.comment</td>
+			
+		</tr>
+		}
+	</tbody>
+</table>
+</div>
+}

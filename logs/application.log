@@ -1,0 +1,12 @@
+2014-03-04 13:43:42,796 - [INFO] - from play in pool-4-thread-3 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2014-03-04 13:52:41,188 - [INFO] - from play in play-internal-execution-context-1 
+datasource [jdbc:mysql://192.168.7.85:3306/play?user=play&password=play] bound to JNDI as DefaultDS
+
+2014-03-04 13:52:43,582 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:mysql://192.168.7.85:3306/play?user=play&password=play
+
+2014-03-04 13:52:53,838 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+

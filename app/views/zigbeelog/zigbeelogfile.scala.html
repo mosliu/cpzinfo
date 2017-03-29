@@ -1,0 +1,63 @@
+@(uploadForm: Form[ZigbeeLogFileParser.Uploader])(logfilecontent: String)(user:User)(id:Long)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "Zigbee Log File Tester",user) {
+	@if(id!=0){
+    <link href="@routes.Assets.at("stylesheets/zigbee.css")" rel="stylesheet" type="text/css"/>
+     @form(action = routes.ZigbeeLogFileParser.searchreview(id,""),  'id -> "form") {
+            <legend>查询</legend>
+            <input type="hidden" name="id" value="@id">
+            <input type="search" id="searchbox" name="f" value="" placeholder="Query ..."  class="input-medium search-query">
+			<button type="submit" class="btn btn-primary">查询</button>
+	} 	
+	}
+    <div align="left">
+    @Html(logfilecontent)
+    </div>
+    @form(action = routes.ZigbeeLogFileParser.upload, 'enctype ->"multipart/form-data", 'id -> "zigbeeform", 'class -> "form-horizontal well well-large well-transparent lead") {
+		<fieldset>
+            <legend>zigbee解析程序日志文件，可视化解析系统</legend>
+            
+			<!-- @inputText(
+				field = uploadForm("encoding"),
+				args = 'label -> "file encoding", 'placeholder -> "Default utf-8", 'type -> "hidden"
+			) -->
+		    <div class="input-append">
+		    @select(
+	            field = uploadForm("encoding"),
+	            options = options(
+	                "gbk" -> "GBK",
+	                "utf-8" -> "UTF-8",
+	                "utf-16" -> "UTF16",
+	                "unicode" -> "UNICODE",
+					"gb2312" -> "GB2312"
+	                
+	            ),
+	            args = '_label -> "Choose file encoding", 'class -> "span3 search-query"
+	        )
+	        
+		    @inputText(
+				field = uploadForm("savefilename"),
+				args = '_label -> "Describe this file", 'placeholder -> "LSSD-01X-20120423", 'class -> "span3 search-query", 'required -> "true"
+			)
+			
+		    @inputFile(
+		    	field = uploadForm("logFile"),
+		    	'_label -> "Select the log file" , 'class ->  "btn btn-file span3"
+		    )
+		    </div>
+			<!-- input type="file" name="picture"-->
+			
+			<p>
+				<button type="submit" class="btn btn-primary offset3"> 提交 </button>  <a href="@routes.ZigbeeLogFileParser.list()" class="btn btn-success offset2"><i class="fa fa-list"></i>  打开上传文件列表</a>
+			</p>
+			
+			<p>
+				
+			</p>
+		</fieldset>
+	} 	
+    
+}

@@ -1,0 +1,337 @@
+@(uploadForm: Form[OrderList])(logfilecontent: String)(user:User) 
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "Order List",user) {
+
+<div class="container span8 well well-large well-transparent lead">
+<fieldset class='form-horizontal '>
+	<legend> 定制单</legend>
+	@inputText(
+            field = uploadForm("orderid"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "定制单号", 
+            	'_showConstraints -> false
+    )
+	@if(uploadForm("productname") != null) {
+    	@inputText(
+            field = uploadForm("productname"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "产品名称", 
+            	'_showConstraints -> false
+        )
+	}
+	@if(uploadForm("samplecompany") != null) {
+    	@inputText(
+            field = uploadForm("samplecompany"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "委托单位", 
+            	'_showConstraints -> false
+        )
+	}
+	@if(uploadForm("marketing") != null) {
+    	@inputText(
+            field = uploadForm("marketing"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "市场代表", 
+            	'_showConstraints -> false
+        )
+	}
+	@if(uploadForm("departmentmanager") != null) {
+    	@inputText(
+            field = uploadForm("departmentmanager"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "部门审核", 
+            	'_showConstraints -> false
+        )
+	}
+	@if(uploadForm("incomedate") != null) {
+    	@inputText(
+            field = uploadForm("incomedate"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "受理日期", 
+            	'_showConstraints -> false
+        )
+	}
+	@if(uploadForm("giveoutdate") != null) {
+    	@inputText(
+            field = uploadForm("giveoutdate"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "交付日期", 
+            	'_showConstraints -> false
+        )
+	}
+	@if(uploadForm("orderrequirement") != null) {
+    	@textarea(
+	            field = uploadForm("orderrequirement"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "委托要求详述（定制需求）",
+	            'rows -> "5",'cols -> "180",	            
+	            '_showConstraints -> false
+	   )
+	}
+	
+	<fieldset>
+		<legend>机械</legend>
+		@if(uploadForm("mechanicalordercontent") != null) {
+    		@inputText(
+	            field = uploadForm("mechanicalordercontent"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "定/改要求", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("mechanicalorderdone") != null) {
+    		@inputText(
+	            field = uploadForm("mechanicalorderdone"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "定/改内容", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("mechanicalengineer") != null) {
+    		@inputText(
+	            field = uploadForm("mechanicalengineer"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "工程师", 
+	            	'_showConstraints -> false
+        	)
+		}
+	</fieldset>
+	<fieldset>
+		<legend>电气</legend>
+		@if(uploadForm("electricalordercontent") != null) {
+    		@inputText(
+	            field = uploadForm("electricalordercontent"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "定/改要求", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("electricalorderdone") != null) {
+    		@inputText(
+	            field = uploadForm("electricalorderdone"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "定/改内容", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("electricalengineer") != null) {
+    		@inputText(
+	            field = uploadForm("electricalengineer"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "工程师", 
+	            	'_showConstraints -> false
+        	)
+		}
+	</fieldset>
+
+	<fieldset>
+		<legend>软件</legend>
+		@if(uploadForm("softcontent") != null) {
+    		@inputText(
+	            field = uploadForm("softcontent"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "定/改要求", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("softdone") != null) {
+    		@inputText(
+	            field = uploadForm("softdone"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "定/改内容", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("softengineer") != null) {
+    		@inputText(
+	            field = uploadForm("softengineer"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "工程师", 
+	            	'_showConstraints -> false
+        	)
+		}
+	</fieldset>
+
+	<fieldset>
+		<legend>资料</legend>
+		@if(uploadForm("usermanualcontent") != null) {
+    		@inputText(
+	            field = uploadForm("usermanualcontent"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "说明书定/改要求", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("usermanualdone") != null) {
+    		@inputText(
+	            field = uploadForm("usermanualdone"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "说明书定/改内容", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("packinglistcontent") != null) {
+    		@inputText(
+	            field = uploadForm("packinglistcontent"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "装箱单定/改要求", 
+	            	'_showConstraints -> false
+        	)
+		}
+		@if(uploadForm("packinglistdone") != null) {
+    		@inputText(
+	            field = uploadForm("packinglistdone"),
+	            	args = 
+	            	'_labelclass -> "span1",
+	            	'class -> "span5",
+	            	'_label -> "装箱单定/改内容", 
+	            	'_showConstraints -> false
+        	)
+		}
+	</fieldset>
+	@if(uploadForm("other") != null) {
+   		@inputText(
+            field = uploadForm("other"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "其他", 
+            	'_showConstraints -> false
+       	)
+	}
+	
+  	@inputText(
+        field = uploadForm("orderstandard"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "定制标准", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("jszxmanager"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "技术中心审核", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("jszxchecktime"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "技术中心审核日期", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("producemanager"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "制造部审核", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("producechecktime"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "制造部审核日期", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("aftersales"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "售后审核", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("orderstandard"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "定制标准", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("cost"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "花费", 
+        '_showConstraints -> false
+    )
+  	@inputText(
+        field = uploadForm("produceperiod"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "生产周期", 
+        '_showConstraints -> false
+    )
+
+   	@textarea(
+        field = uploadForm("comment"),
+        args = 
+        '_labelclass -> "span1",
+        'class -> "span5",
+        '_label -> "备注",
+        'rows -> "5",'cols -> "180",	            
+        '_showConstraints -> false
+   )
+
+
+	<p>
+		<a href="@routes.OrderListParser.list()">返回定制列表</a>
+	</p>
+</fieldset>
+</div>
+<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+</script>
+
+}

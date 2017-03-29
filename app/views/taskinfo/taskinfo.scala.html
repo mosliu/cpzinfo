@@ -1,0 +1,147 @@
+@(TIForm: Form[TaskInfo])(logfilecontent: String)(user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "TaskInfo",user) {
+    
+    
+    
+    @form(action = routes.TaskInfoParser.upload, 'id -> "TIForm" , 'class -> "form-horizontal") {
+    		@if(TIForm.hasGlobalErrors) { 
+    			<h1>
+                <p class="error">
+                    @TIForm.globalError.message
+                </p>
+                </h1>
+            }
+            @if(flash.contains("error")) {
+            	<h1><font color=red>
+                <p class="error">
+                    @flash.get("error")
+                </p>
+                </font></h1>
+            }
+            @if(flash.contains("success")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("success")
+                </p>
+                </font></h1>
+            }
+        <div class="container span8">
+		<fieldset class=''>
+            <legend>工作任务单</egend>
+            
+            <input type="hidden" value="@TIForm("taskInfoId").value" name="taskInfoId" />
+            
+		    @inputText(
+            field = TIForm("taskName"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "任务名称", 
+            	'_showConstraints -> false
+		    )
+		    
+		    @select(
+                TIForm("createrId"), 
+                options(User.options), 
+                '_labelclass -> "span1",
+                'class -> "span5",
+                '_label -> "创建人", 
+                '_default -> "请选择创建人",
+                '_showConstraints -> false
+            )
+            
+		    @select(
+                TIForm("assigneeId"), 
+                options(User.options), 
+                '_labelclass -> "span1",
+                'class -> "span5",
+                '_label -> "任务责任人", 
+                '_default -> "请选择任务责任人",
+                '_showConstraints -> false
+            )
+            
+            @inputText(
+            field = TIForm("workHour"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "计划工时", 
+            	'_showConstraints -> false
+		    )
+            
+            @inputText(
+            field = TIForm("workHourAudit"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "核准工时", 
+            	'_showConstraints -> false
+		    )
+            
+            @inputText(
+            field = TIForm("progress"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "当前进度", 
+            	'_showConstraints -> false
+		    )
+            
+		    @inputDate(
+            field = TIForm("createTime"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "创建日期", 
+            	'_showConstraints -> false
+		    )
+		    
+		    @inputDate(
+            field = TIForm("startTime"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "开始日期", 
+            	'_showConstraints -> false
+		    )
+		    
+		    @inputDate(
+            field = TIForm("endTime"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "截止日期", 
+            	'_showConstraints -> false
+		    )
+		    		    
+		    @textarea(
+	            field = TIForm("description"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "描述",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+	       
+			<p>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</p>
+			<p>
+				<a href="@routes.TaskInfoParser.list()">打开已任务列表</a>
+			</p>
+		</fieldset>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+		</script>
+		
+		
+	} 	
+    
+}

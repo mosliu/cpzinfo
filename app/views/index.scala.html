@@ -1,0 +1,55 @@
+@(message: String,user: User,applist:List[Appinfo])
+@import helper._ 
+@import helper.twitterBootstrap._
+@import be.objectify.deadbolt.core.PatternType
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+@indextemplate(title ="Moses'applications",user) {
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bootmetro.css")'>
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bootmetro-tiles.css")'>
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bootmetro-charms.css")'>
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/metro-ui-light.css")'>
+
+<script src="@routes.Assets.at("javascripts/bootmetro-charms.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/bootmetro.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery.mousewheel.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/holder.js")" type="text/javascript"></script>
+<div class="metro span10">
+	<div class="metro-sections">
+	<div id="section1" class="metro-section tile-span-6">
+		@for(app <- applist) {
+			@if(app.appinuse==1){
+				<a class="tile app @app.appstyle" href="@app.appaddress">
+					<div class="image-wrapper">
+					   <i class="@app.appicon"></i>
+					</div>
+					<span class="app-count">@app.appname</span>
+	        	</a>
+        	}
+		}
+
+		@restrict(la(as("adminrole"))) {
+			<a class="tile wide imagetext bg-color-blue" href="@routes.Admin.user()"">
+				<div class="image-wrapper">
+				   <i class="fa fa-cogs fa-5x"></i>
+				</div>
+				<div class="column-text">
+					<div class="text">  管理用户</div>					
+					<div class="text">  在Role表中</div>					
+				</div>
+				<span class="app-label">用户管理</span>
+        	</a>
+		}
+
+	
+	
+	</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  $(".metro").metro();
+</script>
+
+<div>@message</div>
+}

@@ -1,0 +1,198 @@
+@(FTForm: Form[FaultTreatment])(logfilecontent: String)(user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "Fault Treament",user) {
+    
+    
+    
+    @form(action = routes.FaultTreatmentParser.upload, 'id -> "FTForm" , 'class -> "form-horizontal") {
+    		@if(FTForm.hasGlobalErrors) { 
+    			<h1>
+                <p class="error">
+                    @FTForm.globalError.message
+                </p>
+                </h1>
+            }
+            @if(flash.contains("success")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("success")
+                </p>
+                </font></h1>
+            }
+        <div class="container span8">
+		<fieldset class=''>
+            <legend>产品故障处理表</egend>
+            
+            <input type="hidden" value="@FTForm("id").value" name="id" />
+            
+            <!-- 
+            @inputText(
+            field = FTForm("id"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "产品故障处理表单号", 
+            	'_showConstraints -> false
+		    )
+		    -->
+		    
+		    @inputText(
+            field = FTForm("faultname"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "产品故障名称", 
+            	'_showConstraints -> false
+		    )
+		    
+		    @select(
+                FTForm("devicename"), 
+                options(DeviceInfo.options), 
+                '_labelclass -> "span1",
+                'class -> "span5",
+                '_label -> "设备名称", 
+                '_default -> "请选择设备",
+                '_showConstraints -> false
+            )
+            
+		    @inputDate(
+            field = FTForm("occurdate"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障日期", 
+            	'_showConstraints -> false
+		    )
+		    
+		    @inputText(
+            field = FTForm("faultfrade"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障等级", 
+            	'_showConstraints -> false
+		    )
+            
+		    @inputText(
+            field = FTForm("faultpart"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障关联", 
+            	'_showConstraints -> false
+		    )
+            
+		    @textarea(
+	            field = FTForm("faultsymptom"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障现象",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+		    
+		    @inputText(
+            field = FTForm("faultreporter"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障提交人", 
+            	'_showConstraints -> false
+		    )
+            
+		    @inputText(
+            field = FTForm("faultdealer"),
+            	args = 
+            	'_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障受理人", 
+            	'_showConstraints -> false
+		    )
+            
+		    @textarea(
+	            field = FTForm("confirmation"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障确认",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+		    @textarea(
+	            field = FTForm("examination"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "排查过程",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"          
+	       )
+		    @textarea(
+	            field = FTForm("faultrootcause"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "故障原因",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+		    @textarea(
+	            field = FTForm("troubleshoot"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "问题处理",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+		    @textarea(
+	            field = FTForm("settlement"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "向后管理",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+		    @textarea(
+	            field = FTForm("comment"),
+	            args = 
+	            '_labelclass -> "span1",
+            	'class -> "span5",
+            	'_label -> "备注",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            
+	            '_showConstraints -> false,
+	            '_class -> "control-group"	            
+	       )
+			<p>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</p>
+			<p>
+				<a href="@routes.FaultTreatmentParser.list()">打开已提交问题列表</a>
+			</p>
+		</fieldset>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+		</script>
+		
+		
+	} 	
+    
+}

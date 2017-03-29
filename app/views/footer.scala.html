@@ -1,0 +1,27 @@
+	<footer>
+		<hr />
+		<div class="row">
+            <div class="span6">
+				<br/>Powered by: <i class="fa fa-home"></i><a href="http://blog.liuxuan.net"  target="_blank">Liuxuan</a> | <i class="fa fa-envelope-o"></i><a href="#"  target="_blank">Version : 1.2.0.0</a> | <i class="fa fa-pencil-square-o"></i><a href="mailto:liuxuan@@labthink.cn"  target="_blank">Report a problem</a> | <i class="fa fa-adjust fa-spin"></i></p>
+			</div>
+            <div class="span5" >
+                <blockquote class="pull-right">
+                    <p>
+                        @if(session.get("proverb")==null) {
+                        士不可不弘毅,任重而道远。!
+                        }else{
+                        	@session.get("proverb")
+                        }
+                    </p>
+                    <br />
+                    <small><cite>@if(session.get("proverbcite")==null) {
+                        论语
+                        }else{
+                        	@session.get("proverbcite")
+                        }</cite></small>
+                </blockquote>
+			</div>
+            
+        </div>
+		
+	</footer>

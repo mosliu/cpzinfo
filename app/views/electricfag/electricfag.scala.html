@@ -1,0 +1,80 @@
+@(uploadForm: Form[ElectricFaqParser.Uploader])(logfilecontent: String)(user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "Electric FAQ",user) {
+    
+    
+    
+    @form(action = routes.ElectricFaqParser.upload, 'id -> "uploadForm" , 'class -> "form-horizontal") {
+    		@if(uploadForm.hasGlobalErrors) { 
+    			<h1>
+                <p class="error">
+                    @uploadForm.globalError.message
+                </p>
+                </h1>
+            }
+            @if(flash.contains("success")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("success")
+                </p>
+                </font></h1>
+            }
+        <div class="container span8">
+		<fieldset class=''>
+            <legend>电气FAQ系统</legend>
+            <!-- input type = "hidden" name ="id" id="id" value=""></input-->
+            
+		    @textarea(
+	            field = uploadForm("question"),
+	            args = 
+	            '_label -> "Question",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            '_help -> "Please describe the question.",
+	            '_showConstraints -> false,
+	            '_class -> "control-group",	            
+	            '_error -> uploadForm.error("question")
+	        )
+	       <!--
+	        <div class="clearfix" id="question_field">
+			    <label for="question">Question</label>
+			    <div class="input">
+			        
+			    <textarea id="question" name="question" rows="5" cols="80" class="span4"></textarea>
+			
+			        <span class="help-inline"></span>
+			        <span class="help-block">Please describe the question.</span> 
+			    </div>
+			</div>
+			 -->
+	        @textarea(
+	            field = uploadForm("answer"),
+	            args = '_label -> "Answer",
+	            'rows -> "5",'cols -> "80",'class ->"span5",
+	            '_showConstraints -> false,
+	            '_error -> uploadForm.error("answer"),
+	            '_labelclass -> "ddd"
+	        )
+	        @textarea(
+	            field = uploadForm("comment"),
+	            args = '_label -> "Comment",'rows -> "5",'cols -> "80",'class ->"span5"
+	        )
+	        <input type="hidden" id="id"  name="id"  value ="00">
+			<p>
+				<button type="submit" class="btn btn-primary">Submit</button>
+				
+			</p>
+			<p>
+				<a href="@routes.ElectricFaqParser.list()">打开已提交问题列表</a>
+			</p>
+		</fieldset>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+		</script>
+		
+		
+	} 	
+    
+}

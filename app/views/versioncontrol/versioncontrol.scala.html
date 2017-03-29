@@ -1,0 +1,201 @@
+@(uploadForm: Form[VersionControl])(logfilecontent: String)(user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+
+@indextemplate(title = "版本修改/新建",user) {
+    
+    
+    
+    @form(action = routes.VersionControlParser.upload, 'id -> "uploadForm", 'class -> "form-horizontal well well-large well-transparent lead") {
+    		@if(uploadForm.hasGlobalErrors) { 
+    			
+                <p>
+                   <h1 class="error"> @uploadForm.globalError.message</h1>
+                </p>
+                
+            }
+            @if(flash.contains("success")) {
+            	
+                <p class="success">
+                <h1 class="success"><font color=red>
+                    @flash.get("success")
+                    </font></h1>
+                </p>
+                
+            }
+		<fieldset class="">
+            <legend>软件版本号</legend>
+            <br/>
+            <!-- input type = "hidden" name ="id" id="id" value=""></input-->
+            @select(
+                uploadForm("device"), 
+                options(DeviceInfo.options), 
+                'class -> "span5",
+                '_label -> "设备名称", 
+                '_default -> "请选择设备",
+                '_showConstraints -> false
+            )
+            
+			@select(
+            	field = uploadForm("language"), 
+	            options = options(
+	                "中文" -> "中文",
+	                "英文" -> "英文",
+	                "中英文合版" -> "中英文合版"
+	            ),
+	            args = 'class -> "span5",'_label -> "选择语言"
+	        )
+	        
+	        @select(
+            	field = uploadForm("versionkind"), 
+	            options = options(
+	                "普通" -> "普通",
+	                "定制" -> "定制"
+	            ),
+	            args = 'class -> "span5",'_label -> "特定版本"
+	        )
+            
+            @inputText(
+            	field = uploadForm("versionno"),
+            	args = 
+            	'_label -> "当前版本号", 
+            	'_showConstraints -> false,
+            	'class -> "span5",
+            	'placeholder -> "0.0.0.1"
+        	)
+        	
+            
+            @inputText(
+            	field = uploadForm("fatherversionno"),
+            	args = 
+            	'_label -> "上一版本号", 
+            	'_showConstraints -> false,
+            	'class -> "span5",
+            	'placeholder -> "0.0.0.1"
+        	)
+            
+            @inputText(
+            	field = uploadForm("modifier"),
+            	args = 
+            	'_label -> "修改人", 
+            	'_showConstraints -> false,
+            	'class -> "span5",
+            	'placeholder -> "user.name"
+        	)
+
+            @inputText(
+            	field = uploadForm("modifydate"),
+            	args = 
+            	'_label -> "修改日期",
+            	'_showConstraints -> false,
+            	'class -> "span5",
+            	'class -> "span5",
+            	'placeholder -> ""
+        	)
+            
+            @textarea(
+	            field = uploadForm("modifyreason"),
+	            args = 
+	            '_label -> "修改原因",
+	            'rows -> "5",'cols -> "180",
+	            'class -> "span5",
+	            '_help -> "Please describe the modified reason.",
+	            '_showConstraints -> false,
+	            '_error -> uploadForm.error("modifyreason")
+	        )
+            
+		    @textarea(
+	            field = uploadForm("modifycontent"),
+	            args = 
+	            '_label -> "修改内容",
+	            'rows -> "5",'cols -> "180",
+	            'class -> "span5",
+	            '_help -> "Please describe the modified content.",
+	            '_showConstraints -> false,
+	            '_error -> uploadForm.error("modifycontent")
+	        )
+            
+		    @textarea(
+	            field = uploadForm("packagecontent"),
+	            args = 
+	            '_label -> "打包内容",
+	            'rows -> "5",'cols -> "180",
+	            'class -> "span5",
+	            '_help -> "Please describe the package content.",
+	            '_showConstraints -> false,
+	            '_error -> uploadForm.error("packagecontent")
+	        )
+	        
+            @inputText(
+            field = uploadForm("SCMinfo"),
+            	args = 
+            	'_label -> "单片机信息", 
+            	'class -> "span5",
+            	'placeholder -> ""
+        	)
+        	
+            @select(
+            field = uploadForm("shippingversion"), 
+	            options = options(
+	                "正在使用版本" -> "正在使用版本",
+	                "不再使用版本" -> "不再使用版本"
+	            ),
+	            args = 'class -> "span5",'_label -> "是否在用的版本"
+	        )
+	        <div style="visibility:hidden">
+	        @inputText(
+            field = uploadForm("versionid"),
+            	args = 
+            	'_label -> "当前id号", 
+            	'_showConstraints -> false,
+            	'class -> "span5",
+            	'placeholder -> ""
+        	)
+	        </div>
+	        
+	        <!-- input type="hidden" id="id"  name="id"  value ="00" -->
+			
+				
+			<button type="submit" class="btn btn-primary span2 offset2"> 提交 </button>
+			
+			<a class="btn btn-success offset1" href="@routes.VersionControlParser.list()">打开已提交版本列表</a>
+			
+		</fieldset>
+
+		<script type="text/javascript" charset="utf-8">
+		@Html(logfilecontent)
+		$(document).ready( function() {
+		    $("#device").live('change', function() {
+		        QueryVersion();
+		        //alert($(this).val());
+		    });
+		    $("#language").live('change', function() {
+		        QueryVersion();
+		        //alert($(this).val());
+		    });
+		    $("#versionno_field").append("<label name='versionnoedlabel' id='versionnoedlabel'></label><label name='versionnoed' id='versionnoed' class='input greenfont'></label>")
+		    
+		});
+		function QueryVersion(){
+			$.post('/VersionControl/QueryVer',
+			      {'device':$('#device').val(),'language':$('#language').val()},
+			      function(data) {
+			      		$('#versionnoedlabel').html("当前已有版本：");
+			      		$('#versionnoed').html("<strong>"+ data +"</Strong>");
+			          //window.alert(data);
+			    });
+		}
+		function QueryVersionJ(){
+			$.getJSON('/VersionControl/QueryVerJ',
+			      {'device':$('#device').val(),'language':$('#language').val()},
+			      function(data) {
+			          window.alert(data);
+			    });
+		}
+		</script>
+		
+		
+	} 	
+    
+}

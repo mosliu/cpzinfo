@@ -1,0 +1,52 @@
+@(profilepassForm: Form[Profile.ProfilePass])(user:User)
+
+@import helper._
+
+@indextemplate(title ="Login",user) {    
+    @form(action = routes.Profile.changePassword,  'id -> "profilepassForm") {
+		<fieldset class='fieldset1'>
+            <legend>更改密码</legend>
+            		    
+		   @if(profilepassForm.hasGlobalErrors) { 
+		   		<h1>
+                <p class="error">
+                    @profilepassForm.globalError.message
+                </p>
+                </h1>
+            }
+            
+            @if(flash.contains("success")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("success")
+                </p></font>
+                </h1>
+            }
+            @if(flash.contains("deny")) {
+            	<h1><font color=red>
+                <p class="success">
+                    @flash.get("deny")
+                </p></font>
+                </h1>
+            }
+		    
+		   @inputPassword(
+				field = profilepassForm("userpass"),
+				args = 'label -> "userpass", 'placeholder -> "*******",'_showConstraints -> false,'_error -> profilepassForm.error("userpass")
+			)
+		   @inputPassword(
+				field = profilepassForm("newPassword"),
+				args = 'label -> "newPassword", 'placeholder -> "*******",'_showConstraints -> false,'_error -> profilepassForm.error("newPassword")
+			)
+		   @inputPassword(
+				field = profilepassForm("repeatPassword"),
+				args = 'label -> "repeatPassword", 'placeholder -> "*******",'_showConstraints -> false,'_error -> profilepassForm.error("repeatPassword")
+			)
+			
+			<p>
+				<input type="submit">
+			</p>
+		</fieldset>
+	} 	
+
+}

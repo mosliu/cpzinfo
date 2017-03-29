@@ -1,0 +1,131 @@
+@(currentPage: OrderList.Page, currentSortBy: String, currentOrder: String, currentFilter: String, user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.OrderListParser.list(newPage, sortBy, order, currentFilter)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@indextemplate(title = "Order List",user) {
+    
+    <h1 id="homeTitle">@Messages("", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+    } 
+
+    <div id="actions">
+        
+        <form action="@link(0, "filedescribe")" method="GET" class="form-search">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by zf name..."  class="input-medium search-query">
+            <button type="submit" class="btn btn-primary">Filter by name</button>
+        </form>
+        
+        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+        <br/>
+            <h1><em>Found Nothing</em></h1>
+        <br/>
+        </div>
+        
+    } else {
+        <h1>定制信息表</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    @header("orderid", "定制单号")
+                    @header("productname", "产品名称")
+                    @header("samplecompany", "定制单位")
+                    @header("marketing", "销售代表")
+                    @header("orderrequirement", "委托要求详述（定制需求）")
+                    @header("incomedate", "受理时间")
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(zf <- currentPage.getList) {
+                
+               <tr>
+                        <td><a href="@routes.OrderListParser.review(zf.orderid)">@zf.orderid</a></td>
+                        <td><a href="@routes.OrderListParser.review(zf.orderid)">@zf.productname</a></td>
+                        <td><a href="@routes.OrderListParser.review(zf.orderid)">@zf.samplecompany</a></td>
+                        <td nowrap><a href="@routes.OrderListParser.review(zf.orderid)">@zf.marketing</a></td>
+                        <td width="60%"><a href="@routes.OrderListParser.review(zf.orderid)">@zf.orderrequirement</a></td>
+                        <td nowrap>
+                            @if(zf.incomedate == null) {
+                                <em>-</em>
+                            } else {
+                                @zf.incomedate.format("yyyy MMM dd")
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            <tr><td colspan="6">
+            <div id="pagination" class="pagination">
+                @if(currentPage.hasPrev) {
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasNext) {
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+        	</div>
+        	</td></tr>
+            </tfoot>
+        </table>
+
+        
+        
+    }
+    <script type="text/javascript">
+	    
+	</script>
+        
+}
+
+            

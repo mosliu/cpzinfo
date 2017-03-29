@@ -1,0 +1,131 @@
+@(currentPage: ElectricFaq.Page, currentSortBy: String, currentOrder: String, currentFilter: String, user:User)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.ElectricFaqParser.list(newPage, sortBy, order, currentFilter)
+    
+}
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@indextemplate(title = "Electric FAQ",user) {
+    
+    <h1 id="homeTitle">@Messages("", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+    } 
+
+    <div id="actions">
+        
+        <form action="@link(0, "filedescribe")" method="GET" class="form-search">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by name..." class="input-medium search-query">
+            <button type="submit" class="btn btn-primary">Filter by name</button>
+	        <a class="btn btn-success offset1" id="add" href="@routes.ElectricFaqParser.index()">Upload a new FAQ log</a>
+        </form>
+        
+        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+        <br/>
+            <h1><em>Nothing to display</em></h1>
+        <br/>
+        </div>
+        
+    } else {
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    @header("id", "序号")
+                    @header("email", "Email")
+                    @header("question", "问题")
+                    @header("answer", "解答")
+                    @header("answerdate", "日期")
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(zf <- currentPage.getList) {
+                @if(zf.id%2==1){
+                	<tr class="odd">
+                }else{
+                	<tr>
+                }
+                        <td><a href="@routes.ElectricFaqParser.review(zf.id)">@zf.id</a></td>
+                        <td>@zf.email </td>
+                        <td><a href="@routes.ElectricFaqParser.review(zf.id)">@zf.question</a></td>
+                        <td><a href="@routes.ElectricFaqParser.review(zf.id)">@zf.answer</a></td>
+                           
+                        <td>
+                            @if(zf.answerdate == null) {
+                                <em>-</em>
+                            } else {
+                                @zf.answerdate.format("yyyy MMM dd HH:mm:ss")
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            <tr><td colspan="5">
+            <div id="pagination" class="pagination">
+                @if(currentPage.hasPrev) {
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasNext) {
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+        	</div>
+        	</td></tr>
+            </tfoot>
+        </table>
+
+        
+        
+    }
+        
+}
+
+            

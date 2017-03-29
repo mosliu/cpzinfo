@@ -1,0 +1,74 @@
+@(logfilecontent: String)(user:User)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+@indextemplate(title = "升级记录",user) {
+	
+	
+    
+    <table class="table table-hover">
+	    <thead><tr>
+	    	<th>版本号</th><th>更新时间</th><th>更新内容</th>
+	    </tr></thead>
+	    <tr>
+	    	<td>v1.0</td><td>未记录</td><td>初创，使用Play! framework 2.0框架，加入zigbee解析功能</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v1.x</td><td>未记录</td><td>加入电气FAQ、产品组信息，定制查询功能</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v2.0</td><td>未记录</td><td>整理样式，加入设备辞典、Sn算码器功能，首页页改为数据库管理</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v3.0</td><td>未记录</td><td>升级框架至Play! framework 2.1.0，修改样式改为bootstrap样式</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v3.02</td><td>未记录</td><td>加入故障处理表录入功能</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v3.07</td><td>2013.04.11</td><td>改正zigbee解析程序下的显示字体色彩消失的问题</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v4.0</td><td>2013.04.12</td><td>1.增加条码生成功能初版，输入一串文字，可同时生产1、2维码<br/>2.样式修改，由黑色色系改为蓝色色系</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v4.1</td><td>2013.04.16</td><td>1.修正生成一维码时的写文件问题<br/>2.屏蔽生成一维码时的弹出提示<br/>3.主界面升级，改造成metro风格</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v4.2</td><td>2013.05.13</td><td>1.增大一维码生成尺寸<br/>2.修改一维码生成地址<br/></td>	    	
+	    </tr>
+	    <tr>
+	    	<td>v4.3</td><td>2013.05.13</td><td>1.增加工时计算功能<br/>2.<br/></td>	    	
+	    </tr>
+    </table>
+    <!-- 以下为未完成，待补功能列表 -->
+    <table class="table table-hover table-bordered">
+	    <thead><tr>
+	    	<th>待完善内容</th><th>详细说明</th><th>优先级</th>
+	    </tr></thead>
+	    <tr class="success">
+	    	<td>翻译库分类</td><td>翻译库应按照功能分类</td><td>中</td>	    	
+	    </tr>
+	    <tr class="warning">
+	    	<td>完善各功能权限</td><td>完善各功能的权限，以后将定制查询对外开放</td><td>高</td>	    	
+	    </tr>
+	    <tr class="success">
+	    	<td>条码生成</td><td>按不同设备，配以不同参数进行生成</td><td>中</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>定制库自动导入</td><td>OA定制内容自动导入定制库</td><td>低</td>	    	
+	    </tr>
+	    <tr>
+	    	<td>版本管理升级</td><td>版本库可按照软件选择，一次性列出所有版本</td><td>低</td>	    	
+	    </tr>	   
+	    <tr>
+	    	<td>Play框架升级</td><td>升级至最新的Play框架</td><td>低</td>	    	
+	    </tr>
+    </table>
+    
+    <div align="left">
+    @Html(logfilecontent)
+    </div>
+    
+}

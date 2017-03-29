@@ -1,0 +1,133 @@
+@(currentPage: FaultTreatment.Page, currentSortBy: String, currentOrder: String, currentFilter: String, user:User)
+
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helper.bootstrapTextareaControlGroup.f) }
+
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.FaultTreatmentParser.list(newPage, sortBy, order, currentFilter)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@indextemplate(title = "故障处理情况",user) {
+    
+    <h1 id="homeTitle">@Messages("", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+        
+    } 
+
+    <div id="actions">
+        
+        <form action="@link(0, "filedescribe")" method="GET" name="searchform">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="dict">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        	<a class="btn btn-success" id="add" href="@routes.FaultTreatmentParser.index()">上传一个新故障</a>
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+        <br/>
+            <h1><em>Nothing to display</em></h1>
+        <br/>
+        </div>
+        
+    } else {
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    @header("faultid", "序号")
+                    @header("faultname", "故障名")
+                    @header("devicename", "设备名")
+                    @header("faultreporter", "提交人")
+                    @header("faultdealer", "处理人")
+                    @header("faultrootcause", "故障原因")
+                    @header("troubleshoot", "问题处理")
+    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(zf <- currentPage.getList) {
+                
+               <tr>
+                        <td nowrap><a href="@routes.FaultTreatmentParser.edit(zf.id)">@zf.id</a></td>
+                        <td ><a href="@routes.FaultTreatmentParser.edit(zf.id)">@if(zf.faultname.length>20){@zf.faultname.substring(0,20) ...}else{@zf.faultname}</a></td>
+                        <td nowrap><a href="@routes.FaultTreatmentParser.edit(zf.id)">@zf.devicename</a></td>
+                        <td nowrap><a href="@routes.FaultTreatmentParser.edit(zf.id)">@zf.faultreporter</a></td>
+                        <td nowrap><a href="@routes.FaultTreatmentParser.edit(zf.id)">@zf.faultdealer</a></td>
+                        <td nowrap><a href="@routes.FaultTreatmentParser.edit(zf.id)">@if(zf.faultrootcause.length>30){@zf.faultrootcause.substring(0,30) ...}else{@zf.faultrootcause}</a></td>
+                        <td nowrap width="15%"><a href="@routes.FaultTreatmentParser.edit(zf.id)">@if(zf.troubleshoot.length>30){@zf.troubleshoot.substring(0,30) ...}else{@zf.troubleshoot}</a></td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            <tr><td colspan="7">
+            <div id="pagination" class="pagination">
+                <a href="@link(1, null)">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasPrev) {
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>&larr; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(currentPage.hasNext) {
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                } else {
+                        <a>Next &rarr;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+                <a href="@link(currentPage.getPageLast, null)">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        	</div>
+        	</td></tr>
+            </tfoot>
+        </table>
+
+        
+        
+    }
+    <script type="text/javascript">
+	    
+	</script>
+        
+}
+
+            

@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #3A4244;
+    height: 100%;
+    min-height: 100%;
+   
+}
+
+header {
+    padding: 10px 30px;
+    background: #CAE7EC;
+    font-size: 34px;
+}
+
+header a {
+    color: #1A1E20;
+    text-decoration: none;
+}
+
+footer {
+    padding: 3px 30px;
+    background: #CAE7EC;
+    font-size: 12px;
+
+}
+
+footer a {
+    color: #1A1E20;
+    text-decoration: none;
+}
+section {
+	padding: 10px 30px;
+	font-weight: bold;
+}
+#footerright{
+	 width:49%;
+	 float:right; 
+	 text-align:right;
+	 display:block;
+}
+
+#footerleft{
+	width:49%;
+	float:left;
+	text-align:left;
+	display:block;
+}
+#indexform dd {
+    display: inline-block;
+}
+
+#indexform dd.info {
+    display: none;
+}
+
+#indexform dd.error {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #c00;
+}
+
+#indexform label {
+    font-size: 14px;
+}
+
+#indexform dl {
+    background: #F5F5F5;
+    padding: 10px;
+}
+
+#indexform dl.error {
+    background: #FBDDE6;
+}
+
+#indexform dt {
+    display: inline-block;
+    width: 160px;
+}
+
+.buttons {
+    background: #536565;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.buttons input, .buttons a {
+    border: 1px solid #2F3A3A;
+    background: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000;
+
+}
+
+ul {
+    padding-left: 20px;
+	list-style-type: circle
+}
+
+li {
+	background-color:#F0F0F0;
+	list-style-position: inside;	
+}
+
+.centercontainer {
+	text-align:center;
+	width:100%;
+}
+
+.error {color:red;}
+
+.backhome {font-size:20px;}
